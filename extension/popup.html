@@ -1,1 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teger AI | Security Intelligence</title>
+  <style>
+    :root {
+      --bg-main: #0f172a;
+      --bg-card: #1e293b;
+      --accent: #2563eb;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --risk-high: #ef4444;
+      --risk-low: #10b981;
+      --risk-med: #f59e0b;
+    }
 
+    body {
+      width: 340px;
+      margin: 0;
+      padding: 16px;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, system-ui, sans-serif;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding-bottom: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-name {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text-main);
+    }
+
+    .brand-accent {
+      color: var(--accent);
+    }
+
+    .status-container {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .status-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    #results-area {
+      display: none; 
+      animation: slideUp 0.3s ease-out;
+    }
+
+    .risk-card {
+      background: linear-gradient(145deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05));
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+
+    .risk-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .threat-badge {
+      font-size: 10px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      background: var(--risk-high);
+      color: white;
+    }
+
+    .score-display {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--risk-high);
+      line-height: 1;
+    }
+
+    .explanation {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text-main);
+      margin: 0;
+    }
+
+    .analyze-btn {
+      width: 100%;
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .analyze-btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    .analyze-btn:active {
+      transform: translateY(0);
+    }
+
+    .analyze-btn:disabled {
+      background: #334155;
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(10px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Tactic Tags styling */
+    .tactics-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .tactic-tag {
+      font-size: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="brand">
+      <span style="font-size: 20px;">🛡️</span>
+      <span class="brand-name">TEGER <span class="brand-accent">AI</span></span>
+    </div>
+    <div style="font-size: 10px; color: var(--accent); font-weight: bold; font-family: monospace;">V.2.5.R</div>
+  </div>
+
+  <div id="status-box" class="status-container">
+    <p id="status-text" class="status-text">
+      Capture a message in Gmail or Slack using the <b>Teger Scan</b> button to begin intelligence analysis.
+    </p>
+  </div>
+
+  <div id="results-area">
+    <div class="risk-card" id="risk-card">
+      <div class="risk-header">
+        <span id="threat-level" class="threat-badge">Analyzing</span>
+        <span id="risk-score" class="score-display">--%</span>
+      </div>
+      <p id="explanation-text" class="explanation">
+        Performing deep reasoning on captured intent vectors...
+      </p>
+      <div id="tactics-list" class="tactics-container"></div>
+    </div>
+  </div>
+
+  <button id="analyze-trigger" class="analyze-btn">
+    <span>🧠</span> Deep Reasoning Scan
+  </button>
+
+  <script src="popup.js"></script>
+</body>
+</html>
