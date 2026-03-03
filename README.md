@@ -68,4 +68,3 @@ Social engineering is a human-centric attack. Teger AI utilizes Gemini 3’s Hig
 
 Distributed under the MIT License. See LICENSE for more information.
 
-Built with 💙 for the Gemini 3 Hackathon.
