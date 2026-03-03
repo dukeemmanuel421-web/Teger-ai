@@ -2,7 +2,7 @@ Teger AI: Advanced Social Engineering Detection
 
 Teger AI (derived from the Latin detegere — to uncover) is a cognitive security intelligence engine built to unmask psychological manipulation in enterprise communications.
 
-Developed for the Gemini 3 Hackathon, Teger AI moves beyond static keyword filtering by utilizing Gemini 3's High-Reasoning (Thinking) capabilities to analyze the "Dissonance" between a sender's claimed identity and their actual intent.
+ Teger AI moves beyond static keyword filtering by utilizing Gemini 3's High-Reasoning (Thinking) capabilities to analyze the "Dissonance" between a sender's claimed identity and their actual intent.
 
 🛡️ The Inspiration
 
